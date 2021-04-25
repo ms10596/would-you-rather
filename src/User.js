@@ -1,17 +1,14 @@
 
 
-function User({user}) {
-    console.log(user)
-    return (
-      <div>
-        <h1>{user.name}</h1>
-        <img src={user.avatarURL} />
-        {/* <h2>{user.questions.length}</h2>
-        <h2>{user.answers.length}</h2> */}
+function User({ user }) {
+  return (
+    <div className={"user"}>
+      <h1>{user.name}</h1>
+      <img src={user.avatarURL} alt={user.name} />
+        <h5>Questions: {user.questions.length}</h5>
+        <h5>Answers: {Object.keys(user.answers).length}</h5>
+    </div>
+  );
+}
 
-      </div>
-    );
-  }
-  
-  export default User;
-  
+export default User;
