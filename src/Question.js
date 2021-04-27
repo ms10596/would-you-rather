@@ -2,10 +2,9 @@ import Option from './Option'
 
 function Question({ question }) {
     return (
-        <div>
-            <h1>{question.id}</h1>
-            <h1>{question.author}</h1>
-            <h1>{question.timestamp}</h1>
+        <div className="question">
+            <h1>Would you rather?</h1>
+            <h2>{question.author}</h2>
             <Option option={question.optionOne} />
             <Option option={question.optionTwo} />
         </div>

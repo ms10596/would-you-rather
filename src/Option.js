@@ -3,8 +3,8 @@
 function Option({ option }) {
     return (
         <div>
-            <h1>{option.votes.map(vote => <h1 key={vote}>{vote}</h1>)}</h1>
-            <h1>{option.text}</h1>
+            <button>{option.text}</button>
+            {option.votes.map(vote => <span key={vote}>{vote}, </span>)}
         </div>
     );
 }
