@@ -13,7 +13,7 @@ function ListQuestions() {
   return (
     <div>
       {questions.map(
-        question => (<Question key={question.id} question={question} />)
+        question => (<Question key={question.id} question={question} mini={true}/>)
       )}
     </div>
   );
