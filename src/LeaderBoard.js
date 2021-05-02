@@ -6,17 +6,19 @@ export default function LeaderBoard() {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    _getUsers().then(res => Object.keys(res).map(a => res[a]))
-      .then(res => res.sort((a, b) => a["questions"].length - b["answers"].length))
+    _getUsers()
+      .then(res => Object.keys(res).map(a => res[a]))
+      .then(res => res.sort((a, b) => (Object.keys(b["answers"]).length+b["questions"].length) - 
+      (Object.keys(a["answers"]).length+a["questions"].length)))
       .then(res => setUsers(res))
   }, [users])
 
   return (
-    <div>
+    <table>
       {users.map(
         user => (<User key={user.name} user={user} />)
       )}
-    </div>
+    </table>
   );
 }
 
