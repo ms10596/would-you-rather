@@ -2,7 +2,7 @@ import { _getQuestions } from "./_DATA"
 import { useEffect, useState } from 'react'
 import Question from './Question'
 
-function ListQuestions() {
+export default function ListQuestions() {
   const [questions, setQuestions] = useState([])
 
   useEffect(() => {
@@ -19,4 +19,3 @@ function ListQuestions() {
   );
 }
 
-export default ListQuestions;

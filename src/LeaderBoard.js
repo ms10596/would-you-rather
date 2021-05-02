@@ -2,7 +2,7 @@ import { _getUsers } from "./_DATA"
 import { useEffect, useState } from 'react'
 import User from './User'
 
-function LeaderBoard() {
+export default function LeaderBoard() {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
@@ -20,4 +20,3 @@ function LeaderBoard() {
   );
 }
 
-export default LeaderBoard;

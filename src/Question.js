@@ -1,6 +1,6 @@
 import Option from './Option'
 
-function Question({ question, mini }) {
+export default function Question({ question, mini }) {
    console.log(mini)
    console.log(question)
     if (mini) {
@@ -25,4 +25,3 @@ function Question({ question, mini }) {
     }
 }
 
-export default Question;

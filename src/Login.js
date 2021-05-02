@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import {_getUsers} from "./_DATA"
-function Login() {
+export default function Login({setCurrentUser}) {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
@@ -9,11 +9,14 @@ function Login() {
             .then(res => setUsers(res))
     }, [users])
 
+    const handleSelect = (e) => {
+        setCurrentUser(e.target.value)
+    }
     return (
         <div>
-            <select>
+            <select onChange={handleSelect}>
                 {users.map(
-                    user => (<option key={user.name} value={user.name} >{user.name}</option>)
+                    user => (<option key={user.id} value={user.id} >{user.name}</option>)
                 )}
                 <option key="nothing" value="" selected></option>
             </select>
@@ -21,4 +24,3 @@ function Login() {
     );
 }
 
-export default Login;

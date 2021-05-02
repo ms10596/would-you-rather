@@ -1,20 +1,14 @@
 import './App.css';
-import LeaderBoard from './LeaderBoard'
-import ListQuestions from './ListQuestions'
-import Login from './Login';
+import {useState} from 'react'
+import Navbar from './Navbar';
 
-function App() {
+export default function App() {
+  const [currentUser, setCurrentUser] = useState("")
   return (
     <div>
-      <ul>
-        <li><a href="default.asp">Home</a></li>
-        <li><a href="news.asp">New Question</a></li>
-        <li><a href="contact.asp">LeaderBoard</a></li>
-        <li><Login /></li>
-      </ul>
+     <Navbar setCurrentUser={setCurrentUser}/>
     </div>
   );
 }
 
-export default App;
 

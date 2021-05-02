@@ -1,6 +1,6 @@
 
 
-function Option({ option }) {
+export default function Option({ option }) {
     return (
         <div>
             <button>{option.text}</button>
@@ -9,4 +9,3 @@ function Option({ option }) {
     );
 }
 
-export default Option;
