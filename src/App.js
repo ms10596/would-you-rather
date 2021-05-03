@@ -1,13 +1,42 @@
 import './App.css';
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './Navbar';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import NewQuestion from './NewQuestion';
+import Home from './Home'
+import LeaderBoard from './LeaderBoard'
+import { _getQuestions, _getUsers } from './_DATA';
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState("")
+  const [users, setUsers] = useState([])
+  const [questions, setQuestions] = useState([])
+
+  useEffect(() => {
+    _getUsers().then(res => setUsers(res))
+      _getQuestions().then(res => setQuestions(res))
+  }, [])
+  console.log(users, questions)
   return (
-    <div>
-     <Navbar setCurrentUser={setCurrentUser}/>
-    </div>
+    <Router>
+      <Navbar setCurrentUser={setCurrentUser} />
+      <Switch>
+        <Route exact path="/">
+          <Home currentUser={currentUser} />
+        </Route>
+        <Route exact path="/new-question">
+          <NewQuestion currentUser={currentUser} />
+        </Route>
+        <Route exact path="/leaderboard">
+          <LeaderBoard />
+        </Route>
+      </Switch>
+    </Router>
+
   );
 }
 

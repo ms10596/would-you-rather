@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
-import {_getUsers} from "./_DATA"
-export default function Login({setCurrentUser}) {
+import { _getUsers } from "./_DATA"
+export default function Login({ setCurrentUser }) {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
         _getUsers().then(res => Object.keys(res).map(a => res[a]))
-            .then(res => res.sort((a, b) => a["questions"].length - b["answers"].length))
             .then(res => setUsers(res))
     }, [users])
 
