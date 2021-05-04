@@ -18,21 +18,22 @@ export default function App() {
 
   useEffect(() => {
     _getUsers().then(res => setUsers(res))
-      _getQuestions().then(res => setQuestions(res))
+    _getQuestions().then(res => setQuestions(res))
   }, [])
-  console.log(users, questions)
+  
+
   return (
     <Router>
       <Navbar setCurrentUser={setCurrentUser} />
       <Switch>
         <Route exact path="/">
-          <Home currentUser={currentUser} />
+          <Home currentUser={currentUser} questions={questions}/>
         </Route>
         <Route exact path="/new-question">
           <NewQuestion currentUser={currentUser} />
         </Route>
-        <Route exact path="/leaderboard">
-          <LeaderBoard />
+        <Route exact path="/leaderboard" >
+          <LeaderBoard users={users}/>
         </Route>
       </Switch>
     </Router>
