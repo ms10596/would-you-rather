@@ -11,7 +11,7 @@ export default function MiniQuestion({ question, mini }) {
                 <h1>Would you rather?</h1>
                 <h2>{question.author}</h2>
                 <span>{question.optionOne.text.slice(0, 10)}</span>
-                <button><Link to={`/questions/${question.id}`}>See more</Link></button>
+                <Link to={`/questions/${question.id}`}><button>See more</button></Link>
 
             </div>
         )

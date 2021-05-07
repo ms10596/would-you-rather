@@ -11,6 +11,7 @@ import Home from './Home'
 import LeaderBoard from './LeaderBoard'
 import { _getQuestions, _getUsers } from './_DATA';
 import Question from './Question'
+
 export default function App() {
   const [currentUser, setCurrentUser] = useState("")
   const [users, setUsers] = useState([])
@@ -36,8 +37,12 @@ export default function App() {
             <LeaderBoard users={users} />
           </Route>
           <Route path="/questions/:id">
-            <Question questions={questions}/>
+            <Question questions={questions} currentUser={currentUser}/>
           </Route>
+          <Route path='*' exact={true} >
+            <div>404 not found</div>
+          </Route>
+
         </Switch>
       </Router>
 
