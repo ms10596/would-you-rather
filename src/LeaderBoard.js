@@ -6,9 +6,11 @@ export default function LeaderBoard({ users }) {
 
   return (
     <table>
+      <tbody>
       {users_list.map(
         user => (<User key={user.name} user={user} />)
       )}
+      </tbody>
     </table>
   );
 }

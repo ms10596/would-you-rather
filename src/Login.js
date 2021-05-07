@@ -17,7 +17,7 @@ export default function Login({ setCurrentUser }) {
                 {users.map(
                     user => (<option key={user.id} value={user.id} >{user.name}</option>)
                 )}
-                <option key="nothing" value="" selected></option>
+                <option key="nothing" value="" defaultValue></option>
             </select>
         </div>
     );

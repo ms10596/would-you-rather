@@ -10,7 +10,7 @@ import NewQuestion from './NewQuestion';
 import Home from './Home'
 import LeaderBoard from './LeaderBoard'
 import { _getQuestions, _getUsers } from './_DATA';
-
+import Question from './Question'
 export default function App() {
   const [currentUser, setCurrentUser] = useState("")
   const [users, setUsers] = useState([])
@@ -20,25 +20,37 @@ export default function App() {
     _getUsers().then(res => setUsers(res))
     _getQuestions().then(res => setQuestions(res))
   }, [])
-  
 
-  return (
-    <Router>
-      <Navbar setCurrentUser={setCurrentUser} />
-      <Switch>
-        <Route exact path="/">
-          <Home currentUser={currentUser} questions={questions}/>
-        </Route>
-        <Route exact path="/new-question">
-          <NewQuestion currentUser={currentUser} />
-        </Route>
-        <Route exact path="/leaderboard" >
-          <LeaderBoard users={users}/>
-        </Route>
-      </Switch>
-    </Router>
+  if (currentUser) {
+    return (
+      <Router>
+        <Navbar setCurrentUser={setCurrentUser} />
+        <Switch>
+          <Route exact path="/">
+            <Home currentUser={currentUser} questions={questions} />
+          </Route>
+          <Route exact path="/add">
+            <NewQuestion currentUser={currentUser} />
+          </Route>
+          <Route exact path="/leaderboard" >
+            <LeaderBoard users={users} />
+          </Route>
+          <Route path="/questions/:id">
+            <Question questions={questions}/>
+          </Route>
+        </Switch>
+      </Router>
 
-  );
+    );
+  }
+  else {
+    return (
+      <Router>
+        <Navbar setCurrentUser={setCurrentUser} />
+      </Router>
+    );
+  }
+
 }
 
 

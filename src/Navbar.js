@@ -8,7 +8,7 @@ export default function Navbar({ setCurrentUser }) {
         <div>
             <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/new-question">New Question</Link></li>
+                <li><Link to="/add">New Question</Link></li>
                 <li><Link to="/leaderboard">LeaderBoard</Link></li>
                 <li><Login setCurrentUser={setCurrentUser} /></li>
             </ul>
