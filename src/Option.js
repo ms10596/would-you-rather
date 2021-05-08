@@ -1,13 +1,16 @@
-import { _saveQuestionAnswer, _getQuestions } from "./_DATA"
+import { _saveQuestionAnswer, _getQuestions, _getUsers } from "./_DATA"
 
-export default function Option({ currentUser, id, option, name, setQuestions }) {
+export default function Option({ currentUser, id, option, name, setQuestions, setUsers }) {
     const handleClick = (e) => {
         _saveQuestionAnswer({ authedUser: currentUser, qid: id, answer: name }).then(
             _getQuestions().then(
                 res => setQuestions(res)
-            )
+            ).then(_getUsers().then(
+                res => setUsers(res)
+            ))
         )
-       
+
+
     }
     return (
         <div>
