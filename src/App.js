@@ -31,13 +31,13 @@ export default function App() {
             <Home currentUser={currentUser} questions={questions} />
           </Route>
           <Route exact path="/add">
-            <NewQuestion currentUser={currentUser} />
+            <NewQuestion currentUser={currentUser} setQuestions={setQuestions} />
           </Route>
           <Route exact path="/leaderboard" >
             <LeaderBoard users={users} />
           </Route>
           <Route path="/questions/:id">
-            <Question questions={questions} currentUser={currentUser}/>
+            <Question questions={questions} currentUser={currentUser} setQuestions={setQuestions}/>
           </Route>
           <Route path='*' exact={true} >
             <div>404 not found</div>

@@ -1,7 +1,7 @@
 import './App.css';
 import { _saveQuestion, _getQuestions } from './_DATA'
 
-export default function NewQuestion({ currentUser }) {
+export default function NewQuestion({ currentUser , setQuestions}) {
     const handleSubmit = (e) => {
         e.preventDefault()
         const optionOneText = e.target.optionOne.value
@@ -10,7 +10,7 @@ export default function NewQuestion({ currentUser }) {
         console.log({ optionOneText, optionTwoText, author })
         _saveQuestion({ optionOneText, optionTwoText, author }).then(
             _getQuestions().then(
-                res => console.log(res)
+                res => setQuestions(res)
             )
         )
     }
