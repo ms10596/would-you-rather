@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { _getUsers } from "./_DATA"
+import { _getUsers } from "../_DATA"
 export default function Login({ setCurrentUser }) {
     const [users, setUsers] = useState([])
 

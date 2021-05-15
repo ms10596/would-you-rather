@@ -1,4 +1,4 @@
-import { _saveQuestionAnswer, _getQuestions, _getUsers } from "./_DATA"
+import { _saveQuestionAnswer, _getQuestions, _getUsers } from "../_DATA"
 
 export default function Option({ currentUser, id, option, name, setQuestions, setUsers }) {
     const handleClick = (e) => {
