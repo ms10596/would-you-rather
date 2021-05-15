@@ -1,10 +1,14 @@
 import '../App.css';
-import { _saveQuestion, _getQuestions } from '../_DATA'
+import { _saveQuestion} from '../_DATA'
 import { Redirect } from 'react-router-dom'
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {addQuestion} from '../redux/actions/questions'
+import {addQuestionUser} from '../redux/actions/users'
 
-export default function NewQuestion({ currentUser, setQuestions }) {
+export default function NewQuestion({ currentUser }) {
     let [submitted, setSubmitted] = useState(false)
+    let dispatch = useDispatch()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -13,10 +17,12 @@ export default function NewQuestion({ currentUser, setQuestions }) {
         const author = currentUser
 
         _saveQuestion({ optionOneText, optionTwoText, author }).then(
-            _getQuestions().then(
-                res => setQuestions(res)
-            ).then(setSubmitted(true))
-        )
+            res => {
+                dispatch(addQuestion(res))
+                dispatch(addQuestionUser(res))
+            }
+            
+        ).then(setSubmitted(true))
     }
 
     if (!submitted) {

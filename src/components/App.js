@@ -10,9 +10,8 @@ import NewQuestion from './NewQuestion';
 import Home from './Home'
 import LeaderBoard from './LeaderBoard'
 import Question from './Question'
-import { useDispatch, useStore } from 'react-redux';
-import { handleInitialData } from '../redux/actions/questions';
-
+import { useDispatch } from 'react-redux';
+import { handleInitialData } from '../redux/actions';
 
 
 
@@ -20,16 +19,9 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState("")
   const [users, setUsers] = useState([])
   const dispatch = useDispatch()
-  const store = useStore()
-  // const [questions, setQuestions] = useState([])
-
-  // useEffect(() => {
-  //   _getUsers().then(res => setUsers(res))
-  //   _getQuestions().then(res => setQuestions(res))
-  // }, [])
 
   useEffect(() => {
-    dispatch(handleInitialData()).then(console.log(store.getState()))
+    dispatch(handleInitialData())
   })
 
   if (currentUser) {
@@ -47,7 +39,7 @@ export default function App() {
             <LeaderBoard users={users} />
           </Route>
           <Route path="/questions/:id">
-            <Question currentUser={currentUser}  setUsers={setUsers}/>
+            <Question currentUser={currentUser} setUsers={setUsers} />
           </Route>
           <Route path='*' exact={true} >
             <div>404 not found</div>

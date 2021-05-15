@@ -1,16 +1,15 @@
-import { _saveQuestionAnswer, _getQuestions, _getUsers } from "../_DATA"
+import { useDispatch } from "react-redux";
+import { _saveQuestionAnswer} from "../_DATA"
+import {answerQuestion} from '../redux/actions/questions'
+import { answerQuestionUser } from "../redux/actions/users";
 
-export default function Option({ currentUser, id, option, name, setQuestions, setUsers }) {
+export default function Option({ currentUser, id, option, name }) {
+    const dispatch = useDispatch()
+
     const handleClick = (e) => {
-        _saveQuestionAnswer({ authedUser: currentUser, qid: id, answer: name }).then(
-            _getQuestions().then(
-                res => setQuestions(res)
-            ).then(_getUsers().then(
-                res => setUsers(res)
-            ))
-        )
-
-
+        _saveQuestionAnswer({ authedUser: currentUser, qid: id, answer: name })
+        dispatch(answerQuestion({ authedUser: currentUser, qid: id, answer: name }))
+        dispatch(answerQuestionUser({ authedUser: currentUser, qid: id, answer: name }))
     }
     return (
         <div>

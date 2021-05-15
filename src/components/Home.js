@@ -1,13 +1,11 @@
 import '../App.css'
 import MiniQuestion from './MiniQuestion'
-import {useSelector, shallowEqual, useStore } from 'react-redux'
+import {useSelector, shallowEqual } from 'react-redux'
 
 export default function Home({ currentUser }) {
   const questions = useSelector((state) => state.questions, shallowEqual);
-  const store = useStore()
-  console.log(questions)
-  console.log(store.getState())
   
+  console.log(questions)
   let answeredQuestions = Object.entries(questions).filter(
     ([_, value]) => value["optionOne"]["votes"].includes(currentUser) || value["optionTwo"]["votes"].includes(currentUser)).map(([_, value]) => value).sort((a, b) => a.timestamp - b.timestamp)
   let unansweredQuestions = Object.entries(questions).filter(
